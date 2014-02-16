@@ -8,4 +8,7 @@
 
 #import "NSObject+ObjectiveMeta.h"
 #import "NSObject+AssociatedObjects.h"
+#import "NSObject+Delegate.h"
 #import "OMOpenStruct.h"
+
+#define $(sel) (@selector(sel))

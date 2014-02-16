@@ -14,6 +14,12 @@
 
 @end
 
+@interface NSArray (Test)
+
+- (NSString *)lastUppercaseString;
+
+@end
+
 @implementation ObjectiveMetaTests
 
 - (void)setUp
@@ -41,6 +47,16 @@
     obj = [[NSObject alloc] init];
 
     XCTAssertNil([obj associatedObjectForKey:@"testKey"], @"Associated object should only be associates once");
+}
+
+- (void)testDelegateMethods
+{
+    [NSArray delegate:$(uppercaseString) to:$(lastObject) prefix:@"last"];
+
+    NSArray *delegateTestArray = @[@1, @"test"];
+
+    XCTAssertEqualObjects([delegateTestArray lastUppercaseString], @"TEST", @"Delegated methods should delegate method with prefix");
+
 }
 
 - (void)testOpenStruct
